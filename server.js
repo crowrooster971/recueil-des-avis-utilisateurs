@@ -6,7 +6,7 @@ const cors = require('cors');
 const app = express();
 
 // Middleware
-app.use(cors({ origin: process.env.CORS_ORIGIN || 'https://example.com' })); // Restricting access to a specific origin
+app.use(cors({ origin: process.env.CORS_ORIGIN || 'https://example.com' })); // Restricting access to a specific origin via CORS configuration.
 app.use(express.json());
 
 // Connexion à la base de données MongoDB
