@@ -38,7 +38,7 @@ app.post('/avis', async (req, res) => {
     await avis.save();
     res.status(201).send(avis);
   } catch (e) {
-    res.status(400).send({ message: 'Erreur lors de l'enregistrement de l'avis', error: e.message });
+    res.status(400).send({ message: 'Erreur lors de l\'enregistrement de l\'avis', error: e.message });
   }
 });
 
