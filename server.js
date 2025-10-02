@@ -10,7 +10,8 @@ app.use(cors());
 app.use(express.json());
 
 // Connexion à la base de données MongoDB
-mongoose.connect('mongodb://localhost:27017/recueil-des-avis-utilisateurs', {
+const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/recueil-des-avis-utilisateurs';
+mongoose.connect(mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 }).then(() => {
