@@ -17,7 +17,7 @@ mongoose.connect(mongoURI, {
 }).then(() => {
   console.log('Connecté à la base de données');
 }).catch((err) => {
-  console.error('Erreur de connexion à la base de données:', err);
+  console.error('Erreur de connexion à la base de données :', err.message);
 });
 
 // Modèle Mongoose pour les avis
@@ -38,7 +38,7 @@ app.post('/avis', async (req, res) => {
     await avis.save();
     res.status(201).send(avis);
   } catch (e) {
-    res.status(400).send({ message: 'Error saving avis', error: e });
+    res.status(400).send({ message: 'Erreur lors de l'enregistrement de l'avis', error: e.message });
   }
 });
 
@@ -47,7 +47,7 @@ app.get('/avis', async (req, res) => {
     const avis = await Avis.find();
     res.send(avis);
   } catch (e) {
-    res.status(500).send({ message: 'Error fetching avis', error: e });
+    res.status(500).send({ message: 'Erreur lors de la récupération des avis', error: e.message });
   }
 });
 
