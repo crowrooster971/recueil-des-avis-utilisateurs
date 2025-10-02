@@ -38,7 +38,7 @@ app.post('/avis', async (req, res) => {
     await avis.save();
     res.status(201).send(avis);
   } catch (e) {
-    res.status(400).send(e);
+    res.status(400).send({ message: 'Error saving avis', error: e });
   }
 });
 
@@ -47,7 +47,7 @@ app.get('/avis', async (req, res) => {
     const avis = await Avis.find();
     res.send(avis);
   } catch (e) {
-    res.status(500).send(e);
+    res.status(500).send({ message: 'Error fetching avis', error: e });
   }
 });
 
