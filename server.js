@@ -6,10 +6,10 @@ const cors = require('cors');
 const app = express();
 
 // Middleware
-app.use(cors({ origin: process.env.CORS_ORIGIN || 'https://example.com' })); // Restricting access to a specific origin via CORS configuration.
+app.use(cors({ origin: process.env.CORS_ORIGIN || 'https://example.com' })); // CORS configuration
 app.use(express.json());
 
-// Connexion à la base de données MongoDB
+// Connect to MongoDB
 const mongoURI = process.env.MONGO_URI || 'mongodb://localhost:27017/recueil-des-avis-utilisateurs';
 mongoose.connect(mongoURI, {
   useNewUrlParser: true,
@@ -20,7 +20,7 @@ mongoose.connect(mongoURI, {
   console.error('Erreur de connexion à la base de données :', err.message);
 });
 
-// Modèle Mongoose pour les avis
+// Mongoose model for reviews
 const AvisSchema = new mongoose.Schema({
   produit: String,
   utilisateur: String,
@@ -51,7 +51,7 @@ app.get('/avis', async (req, res) => {
   }
 });
 
-// Port d'écoute
+// Listening on specified port
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Serveur en marche sur le port ${PORT}`);
